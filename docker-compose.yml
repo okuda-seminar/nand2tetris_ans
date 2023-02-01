@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  nand2tetris:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nand2tetris
+    working_dir: "/workspace/"
+    tty: true
+    volumes:
+      - ./:/workspace
