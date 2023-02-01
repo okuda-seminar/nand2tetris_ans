@@ -31,6 +31,8 @@
 *.out
 *.app
 
+.DS_STORE
+
 # Directories
 add
 build
