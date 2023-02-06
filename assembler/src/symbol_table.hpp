@@ -3,9 +3,6 @@
 #include <string>
 #include <unordered_map>
 
-using std::string;
-using std::unordered_map;
-
 class SymbolTable {
   public:
     SymbolTable() : from_symbol_to_address_{
@@ -34,10 +31,10 @@ class SymbolTable {
       {"KBD", 24576},
     } {};
     ~SymbolTable() = default;
-    void AddEntry(const string symbol, const int address);
-    bool IsContain(const string symbol);
-    int GetAddress(const string symbol);
+    void AddEntry(const std::string symbol, const int address);
+    bool IsContain(const std::string symbol);
+    int GetAddress(const std::string symbol);
   
   private:
-    unordered_map<string, int> from_symbol_to_address_;
+    std::unordered_map<std::string, int> from_symbol_to_address_;
 };

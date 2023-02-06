@@ -5,4 +5,3 @@ add_library(assembler STATIC
   ./parser.cpp
   ./symbol_table.cpp
 )
-# target_include_directories(assembler_source INTERFACE ./src)

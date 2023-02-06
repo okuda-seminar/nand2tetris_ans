@@ -61,6 +61,7 @@ void Assembler::GenerateCode() {
   int var_count = 0;
   while (parser_.HasMoreCommands()) {
     CommandType command_type = parser_.GetCommandType();
+
     if (command_type == CommandType::kA) {
       // A-Command
       std::string symbol = parser_.GetSymbol();

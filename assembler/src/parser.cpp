@@ -34,7 +34,7 @@ void Parser::Advance() {
   }
   getline(input_stream_, current_line_);
 
-  // deal with the case when the current_line_ contains comment
+  // deals with the case when the current_line_ contains comment
   int slash_pos = current_line_.find('/');
   if (slash_pos == 0) {
     Parser::Advance();
@@ -42,7 +42,7 @@ void Parser::Advance() {
     current_line_ = current_line_.substr(0, slash_pos);
   }
 
-  // remove all spaces from current_line_
+  // removes all spaces from current_line_
   current_line_.erase(
     std::remove_if(current_line_.begin(), current_line_.end(), ::isspace),
     current_line_.end()
