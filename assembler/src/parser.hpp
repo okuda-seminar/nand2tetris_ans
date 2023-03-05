@@ -5,7 +5,7 @@
 
 // The kinds of the command type.
 // A-Command:
-//    Used to set the A register ti a 15-bit value.
+//    Used to set the A register to a 15-bit value.
 // C-Command:
 //    A specification that answers three questions: what to compute,
 //    where to store the computed value, and what to do next.
