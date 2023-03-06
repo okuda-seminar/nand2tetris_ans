@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 
+namespace assembler {
+
 Parser::Parser(const std::string input_file) {
   input_stream_.open(input_file);
   if (!input_stream_) {
@@ -28,41 +30,39 @@ bool Parser::HasMoreCommands() {
 }
 
 void Parser::Advance() {
-  if (!Parser::HasMoreCommands()) {
+  if (!HasMoreCommands()) {
     current_line_ = "";
     return;
   }
   getline(input_stream_, current_line_);
 
-  // deals with the case when the current_line_ contains comment
-  int slash_pos = current_line_.find('/');
+  // deals with the case when the current_line_ contains comment.
+  auto slash_pos = current_line_.find('/');
   if (slash_pos == 0) {
-    Parser::Advance();
+    Advance();
   } else if (slash_pos != std::string::npos) {
     current_line_ = current_line_.substr(0, slash_pos);
   }
 
-  // removes all spaces from current_line_
+  // removes all spaces from current_line_.
   current_line_.erase(
     std::remove_if(current_line_.begin(), current_line_.end(), ::isspace),
     current_line_.end()
   );
   if (current_line_ == "") {
-    Parser::Advance();
+    Advance();
   }
 }
 
 CommandType Parser::GetCommandType() {
   if (current_line_[0] == '@') {
     current_command_type_ = CommandType::kA;
-    return CommandType::kA;
   } else if (current_line_[0] == '(') {
     current_command_type_ = CommandType::kL;
-    return CommandType::kL;
   } else {
     current_command_type_ = CommandType::kC;
-    return CommandType::kC;
   }
+  return current_command_type_;
 }
 
 std::string Parser::GetSymbol() {
@@ -84,7 +84,7 @@ std::string Parser::GetDest() {
     exit(-1);
   }
 
-  int equal_pos = current_line_.find('=');
+  auto equal_pos = current_line_.find('=');
   if (equal_pos == std::string::npos) {
     return "";
   }
@@ -98,8 +98,8 @@ std::string Parser::GetComp() {
     exit(-1);
   }
 
-  int equal_pos = current_line_.find('=');
-  int semicolon_pos = current_line_.find(';');
+  auto equal_pos = current_line_.find('=');
+  auto semicolon_pos = current_line_.find(';');
 
   if (equal_pos == std::string::npos) {
     return current_line_.substr(0, semicolon_pos);
@@ -117,9 +117,11 @@ std::string Parser::GetJump() {
     exit(-1);
   }
 
-  int semicolon_pos = current_line_.find(';');
+  auto semicolon_pos = current_line_.find(';');
   if (semicolon_pos == std::string::npos) {
     return "";
   }
   return current_line_.substr(semicolon_pos + 1);
 }
+
+} // namespace assembler

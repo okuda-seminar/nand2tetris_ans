@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 TEST(ParserTest, Advance) {
-  Parser parser("../test/parser_test.txt");
+  assembler::Parser parser("../test/parser_test.txt");
   parser.Advance();
   EXPECT_EQ(parser.GetCurrentLine(), "@i");
 
@@ -18,24 +18,24 @@ TEST(ParserTest, Advance) {
 }
 
 TEST(ParserTest, GetCommandType) {
-  Parser parser("../test/parser_test.txt");
-  CommandType current;
+  assembler::Parser parser("../test/parser_test.txt");
+  assembler::CommandType current;
 
   parser.Advance();
   current = parser.GetCommandType();
-  EXPECT_EQ(current, CommandType::kA);
+  EXPECT_EQ(current, assembler::CommandType::kA);
 
   parser.Advance();
   current = parser.GetCommandType();
-  EXPECT_EQ(current, CommandType::kC);
+  EXPECT_EQ(current, assembler::CommandType::kC);
 
   parser.Advance();
   current = parser.GetCommandType();
-  EXPECT_EQ(current, CommandType::kL);
+  EXPECT_EQ(current, assembler::CommandType::kL);
 }
 
 TEST(ParserTest, GetSymbol) {
-  Parser parser("../test/symbol_test.txt");
+  assembler::Parser parser("../test/symbol_test.txt");
   parser.Advance();
   parser.GetCommandType();
   EXPECT_EQ(parser.GetSymbol(), "i");
@@ -47,7 +47,7 @@ TEST(ParserTest, GetSymbol) {
 
 
 TEST(ParserTest, GetDest) {
-  Parser parser("../test/parser_c_command.txt");
+  assembler::Parser parser("../test/parser_c_command.txt");
   parser.Advance();
   parser.GetCommandType();
   EXPECT_EQ(parser.GetDest(), "D");
@@ -58,7 +58,7 @@ TEST(ParserTest, GetDest) {
 }
 
 TEST(ParserTest, GetComp) {
-  Parser parser("../test/parser_c_command.txt");
+  assembler::Parser parser("../test/parser_c_command.txt");
   parser.Advance();
   parser.GetCommandType();
   EXPECT_EQ(parser.GetComp(), "A");
@@ -69,7 +69,7 @@ TEST(ParserTest, GetComp) {
 }
 
 TEST(ParserTest, GetJump) {
-  Parser parser("../test/parser_c_command.txt");
+  assembler::Parser parser("../test/parser_c_command.txt");
   parser.Advance();
   parser.GetCommandType();
   EXPECT_EQ(parser.GetJump(), "");

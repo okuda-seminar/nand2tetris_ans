@@ -3,6 +3,8 @@
 #include <string>
 #include <unordered_map>
 
+namespace assembler {
+
 class SymbolTable {
   public:
     SymbolTable() : from_symbol_to_address_{
@@ -38,3 +40,5 @@ class SymbolTable {
   private:
     std::unordered_map<std::string, int> from_symbol_to_address_;
 };
+
+} // namespace assembler

@@ -8,6 +8,8 @@
 #include "parser.hpp"
 #include "symbol_table.hpp"
 
+namespace assembler {
+
 extern const std::unordered_map<std::string, std::string> dest_map;
 extern const std::unordered_map<std::string, std::string> comp_map;
 extern const std::unordered_map<std::string, std::string> jump_map;
@@ -37,3 +39,5 @@ class Assembler {
     Parser parser_;
     SymbolTable symbol_table_;
 };
+
+} // namespace assembler

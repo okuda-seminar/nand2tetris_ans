@@ -3,6 +3,8 @@
 #include <string>
 #include <unordered_map>
 
+namespace assembler {
+
 const std::unordered_map<std::string, std::string> dest_map {
   {"", "000"},
   {"M", "001"},
@@ -55,3 +57,5 @@ const std::unordered_map<std::string, std::string> jump_map {
   {"JLE", "110"},
   {"JMP", "111"},
 };
+
+} // namespace assembler

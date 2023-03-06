@@ -3,6 +3,8 @@
 #include <fstream>
 #include <string>
 
+namespace assembler {
+
 // The kinds of the command type.
 // A-Command:
 //    Used to set the A register to a 15-bit value.
@@ -20,7 +22,7 @@ enum class CommandType {
 
 // Gets a line from the input file and parses it.
 // Example:
-//    Parser parser("input_file.txt");
+//    Parser parser("input_file.asm");
 //    parser.Advance();
 //    std::string symbol = parser.GetSymbol();
 class Parser {
@@ -46,10 +48,12 @@ class Parser {
     std::string GetDest();
     std::string GetComp();
     std::string GetJump();
-    std::string GetCurrentLine() {return current_line_;}
+    std::string GetCurrentLine() { return current_line_; }
 
   private:
     std::ifstream input_stream_;
     CommandType current_command_type_;
     std::string current_line_;
 };
+
+} // namsespace assembler

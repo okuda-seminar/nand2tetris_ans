@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 
-#include "src/assembler.hpp"
-#include "src/parser.hpp"
-#include "src/symbol_table.hpp"
+#include "./src/assembler.hpp"
+#include "./src/parser.hpp"
+#include "./src/symbol_table.hpp"
 
 int main(int argc, char *argv[]) {
   if (argc != 2) {
@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
   }
 
   std::string input_file = argv[1];
-  Assembler assembler(input_file);
+  assembler::Assembler assembler(input_file);
   assembler.BuildSymbolTable();
   assembler.GenerateCode();
 

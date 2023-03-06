@@ -10,13 +10,17 @@
 #include "parser.hpp"
 #include "symbol_table.hpp"
 
+namespace assembler {
+
 namespace {
+
   bool IsNumber(const std::string str) {
     for (const char &c : str) {
       if (std::isdigit(c) == 0) return false;
     }
     return true;
   }
+
 } // namespace
 
 Assembler::Assembler(const std::string input_file)
@@ -90,3 +94,5 @@ void Assembler::GenerateCode() {
     parser_.Advance();
   }
 }
+
+} // namespace assembler
