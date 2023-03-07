@@ -1,0 +1,4 @@
+// This is a comment.
+push constant 1
+pop this 2
+add

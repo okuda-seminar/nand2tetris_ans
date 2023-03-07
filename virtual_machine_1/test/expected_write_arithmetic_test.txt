@@ -1,0 +1,29 @@
+// add
+@SP
+AM=M-1
+D=M
+AM=M-1
+M=D+M
+@SP
+M=M+1
+// eq
+@SP
+AM=M-1
+D=M
+@SP
+AM=M-1
+D=M-D
+@LABEL0
+D;JEQ
+@SP
+A=M
+M=0
+@ENDLABEL0
+0;JMP
+(LABEL0)
+@SP
+A=M
+M=-1
+(ENDLABEL0)
+@SP
+M=M+1
