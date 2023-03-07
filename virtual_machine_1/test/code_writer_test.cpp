@@ -24,8 +24,8 @@ TEST(CodeWriterTest, WriteArithmetic) {
   file1.seekg(0);
   file2.seekg(0);
 
-  char* buffer1 = new char[file1_size];
-  char* buffer2 = new char[file2_size];
+  char *buffer1 = new char[file1_size];
+  char *buffer2 = new char[file2_size];
 
   file1.read(buffer1, file1_size);
   file2.read(buffer2, file2_size);
@@ -58,8 +58,8 @@ TEST(CodeWriteTest, WritePushPop) {
   file1.seekg(0);
   file2.seekg(0);
 
-  char* buffer1 = new char[file1_size];
-  char* buffer2 = new char[file2_size];
+  char *buffer1 = new char[file1_size];
+  char *buffer2 = new char[file2_size];
 
   file1.read(buffer1, file1_size);
   file2.read(buffer2, file2_size);
